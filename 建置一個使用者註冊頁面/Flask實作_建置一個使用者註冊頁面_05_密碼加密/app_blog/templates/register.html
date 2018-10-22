@@ -1,0 +1,10 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Reister Page{% endblock title %}
+{% block content %}
+<div class="container">
+    <h1>Register Your Account</h1>
+    <h2>Welcome To My Blog</h2>
+    {{ wtf.quick_form(form) }}
+</div>    
+{% endblock content%}
