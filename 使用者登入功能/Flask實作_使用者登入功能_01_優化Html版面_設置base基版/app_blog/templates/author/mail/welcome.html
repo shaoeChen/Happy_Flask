@@ -1,0 +1,3 @@
+<h1>Hello {{ user.username }}, Welcome join us!</h1>
+<h2>Please activate your account, just press the hyperlink within a day.</h2>
+hyperlink=>{{ url_for('user_confirm', token=token, _external=True) }}

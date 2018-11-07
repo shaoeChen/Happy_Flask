@@ -1,0 +1,46 @@
+{% extends "bootstrap\base.html" %}
+{% block title %}UserRegister{% endblock title %}
+{% block navbar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <!-- 透過url_for設定HOME連結綁定index -->
+      <a class="navbar-brand" href="{{ url_for('index')}}">HOME</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- 透過url_for設定USERINFO連結綁定userinfo -->
+        <li><a href="{{ url_for('userinfo') }}">USERINFO</a></li>
+        <!-- 透過url_for設定LOGOUT連結綁定LOGOUT -->
+        <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+        <!-- 透過url_for設定LOGIN連結綁定LOGIN -->
+        <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock navbar %}
+{% block content %}
+    <div class="container">
+        <!-- 用來接後端傳來的flash-message -->
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <!-- 弄一個x的button，點擊之後讓訊息消失，可參考bootstrap說明 -->
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+        {% block page_content %}{% endblock %}
+    </div>
+{% endblock content %}
